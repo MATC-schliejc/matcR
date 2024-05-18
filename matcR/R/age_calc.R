@@ -1,0 +1,32 @@
+#' A Function to calculate one's age on a specified date
+#'
+#' @param dob requires a date formatted field.  For Example: as.Date(column,'\%m/\%d/\%Y')
+#' @param end_date The date used to determine the age.  For Example: as.Date(column,'\%m/\%d/\%Y')
+#' @param units expects: years,months,days
+#' @return A vector of numbers the same length as dob
+#' @export
+#'
+
+
+age_calc <- function(dob, end_date = Sys.Date(), units = 'years'){
+
+  if (!inherits(dob, "Date") | !inherits(end_date, "Date"))
+    stop("Both dob and enddate must be Date class objects")
+  start <- as.POSIXlt(dob)
+  end <- as.POSIXlt(end_date)
+
+  years <- end$year - start$year
+  if(units=='years'){
+    result <- ifelse((end$mon < start$mon) |
+                       ((end$mon == start$mon) & (end$mday < start$mday)),
+                     years - 1, years)
+  }else if(units=='months'){
+    months <- (years-1) * 12
+    result <- months + start$mon
+  }else if(units=='days'){
+    result <- difftime(end, start, units='days')
+  }else{
+    stop("Unrecognized units. Please choose years, months, or days.")
+  }
+  return(result)
+}

@@ -1,0 +1,14 @@
+Package: matcR
+Version: 0.3.1
+Date: 2024-05-06
+Title: Custom MATC R Functions
+Author: John Schliesmann
+Maintainer: John Schliesmann <schliejc@matc.edu>
+Description: Provides functions and dataset helpful for MATC IR Office.  Provides formatting automation of fixed-width files.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.0.1)
+Imports: dplyr,logging,readr,rlang,tibble,tidyverse,utils,purrr,googlesheets4
+RoxygenNote: 7.3.1

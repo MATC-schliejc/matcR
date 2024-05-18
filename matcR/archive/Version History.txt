@@ -1,0 +1,13 @@
+0.1.0 Orginal package with read_matc_fwf, write_fwf, and fwf_layouts dataframe.
+
+0.2.0 Added functions get_file_path and age_calc.  Also, removed internal helper functions from read_matc_fwf and placed in helpers.R 
+
+0.2.1 In read_matc_fwf: replaced file_pattern and folder arguments with filename.  This aligns better with argument conventions of read_fwf from readR library.  matcR::get_file_path can fulfill the same function as the file_pattern and folder arguments
+
+0.2.2 In read_matc_fwf: updated rcd filter to look for 'record_id' column.  Previously, the function assumed the column exists. This may not be true for non-WTCS fixed-width files, such as the MATC fifth week file.  
+
+0.2.3 In get_file_path: updated the returned value when no file is found to NULL from FALSE.  Changed the wording when no file is found message.  Added documentation for helper files.
+
+0.2.4 Integrated WTCS Graduate Outlook Survey layout changes 
+
+0.2.5 TODO:  update write_fwf to handle ldf created via list(x1,x2,x3).  Instead of the names(list) to drive for loop is uses length(list) and index in autocreated script.  This will allow for the ldf names to not match the record id.

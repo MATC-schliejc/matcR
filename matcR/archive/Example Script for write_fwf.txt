@@ -1,0 +1,28 @@
+# This example shows the expected text before the eval statement in write.fwf
+# It represents the code for the graduate outcomes survey layout for 2020-21 (it was changed for FY2021-22)
+
+# final  line 1 is output for n in write_fwf.r
+# final  line 2 - end is the output for n2 in write_fwf.r
+
+
+final <- c(sprintf(paste0(rep("%s",ncol(c)),collapse = ''),
+                   str_trunc(str_pad(c$record_id,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$district_id,2,'right'),2,'right',ellipsis=''),
+                   str_trunc(str_pad(c$student_id,9,'right'),9,'right',ellipsis=''),
+                   str_trunc(str_pad(c$program_number,6,'right'),6,'right',ellipsis=''),
+                   str_trunc(str_pad(c$blank_1,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$reply_status,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$satisfaction_training,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$reason_attending,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$present_status,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$when_work_started,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$job_related_training,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$employer_location,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$wage,7,'left'),7,'left',ellipsis=''),
+                   str_trunc(str_pad(c$wage_basis_code,1,'right'),1,'right',ellipsis=''),
+                   str_trunc(str_pad(c$weekly_work_hours,2,'right'),2,'right',ellipsis=''),
+                   str_trunc(str_pad(c$blank_2,4,'right'),4,'right',ellipsis=''),
+                   str_trunc(str_pad(c$job_title,40,'right'),40,'right',ellipsis='')
+))
+which(nchar(final) != 80) #80 is the expected length of each row
+write.table(as.data.frame(final), WTCS_FILE_NAME ,col.names = FALSE, row.names = FALSE, quote = FALSE, append = FALSE)
